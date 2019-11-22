@@ -18,6 +18,8 @@ class Radon
 	D denominator;
 public:
 	
+	using RadonValue = Radon<N, D>;
+
 	Radon(N n, D d)
 	{
 		numerator = n;
@@ -29,10 +31,19 @@ public:
 
 	}
 
-
-	~Radon();
+public:
+	RadonValue operator+(RadonValue rhs);
+	RadonValue operator-(RadonValue rhs);
+	RadonValue operator*(RadonValue rhs);
+	RadonValue operator/(RadonValue rhs);
+	RadonValue operator%(RadonValue rhs);
+	RadonValue operator++(int);
+	RadonValue operator--(int);
+	RadonValue operator++();
+	RadonValue operator--();
 
 public:
+	std::string toString();
 
 };
 

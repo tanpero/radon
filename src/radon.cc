@@ -1,5 +1,1 @@
-#include "radon.h"
-
-Radon::~Radon()
-{
-}
+#include <radon.h>
