@@ -8,7 +8,7 @@
 #include <iostream>
 #include <type_traits>
 #include <bigint.h>
-
+#include <tuple>
 
 class Radon
 {
@@ -28,15 +28,15 @@ public:
 	Radon(std::string source);
 
 public:
-	RadonValue operator+(RadonValue rhs);
-	RadonValue operator-(RadonValue rhs);
-	RadonValue operator*(RadonValue rhs);
-	RadonValue operator/(RadonValue rhs);
-	RadonValue operator%(RadonValue rhs);
-	RadonValue operator++(int);
-	RadonValue operator--(int);
-	RadonValue operator++();
-	RadonValue operator--();
+	Radon operator+(Radon rhs);
+	Radon operator-(Radon rhs);
+	Radon operator*(Radon rhs);
+	Radon operator/(Radon rhs);
+	Radon operator%(Radon rhs);
+	Radon operator++(int);
+	Radon operator--(int);
+	Radon operator++();
+	Radon operator--();
 
 public:
 	std::string toString();

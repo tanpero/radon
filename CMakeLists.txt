@@ -8,7 +8,7 @@ add_library (radon STATIC
 	"test/main.cc"
 )
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++20")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
 
 target_include_directories (radon PUBLIC src)
 

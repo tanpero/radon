@@ -1,5 +1,5 @@
-#ifndef _FLANER_RUNTIME_NUMERIC_BIGINT_HH_
-#define _FLANER_RUNTIME_NUMERIC_BIGINT_HH_
+#ifndef _BIGINT_HH_
+#define _BIGINT_HH_
 
 #include <vector>
 #include <string>
@@ -8,11 +8,9 @@
 #include <memory>
 #include <iostream>
 #include <iomanip>
-#include <radon.h>
 
-
-const int base = 10e9;
-const int base_digits = 9;
+constexpr const int base = 1000000000;
+constexpr const int base_digits = 9;
 
 class Bigint
 {
@@ -23,7 +21,7 @@ public:
     Bigint() noexcept;
     Bigint(long long v);
     Bigint(std::string &s);
-    Bigint(std::string &s, int base);
+    Bigint(std::string &s, int _base);
     void operator=(const Bigint &v);
     void operator=(long long v);
     void operator=(std::string s);
@@ -99,4 +97,5 @@ public:
     Bigint MinValue();
 };
 
-#endif // !_FLANER_RUNTIME_NUMERIC_BIGINT_HH_
+
+#endif // !_BIGINT_HH_
