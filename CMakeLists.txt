@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 3.0)
 project (radon)
 add_library (radon STATIC
+    "src/bigint.h"
+	"src/bigint.cc"
     "src/radon.h"
 	"src/radon.cc"
 	"test/main.cc"
