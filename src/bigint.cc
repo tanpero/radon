@@ -139,7 +139,7 @@ Bigint Bigint::operator*(long long v) const
 
 size_t Bigint::digits()
 {
-    if (a.empty())return 0;
+    if (a.empty()) return 0;
     int ans = (a.size() - 1)*base_digits;
     int ca = a.back();
     while (ca)

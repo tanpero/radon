@@ -7,29 +7,25 @@
 #include <string>
 #include <iostream>
 #include <type_traits>
+#include <bigint.h>
 
 
-template<typename N, typename D,
-	typename = std::enable_if_t<std::is_arithmetic<N>::value
-	&& std::is_arithmetic<D>::value>>
 class Radon
 {
-	N numerator;
-	D denominator;
-public:
-	
-	using RadonValue = Radon<N, D>;
+	Bigint numerator;
+	Bigint denominator;
 
+public:
+	template<typename N, typename D,
+		typename = std::enable_if_t<std::is_arithmetic<N>::value
+		&& std::is_arithmetic<D>::value>>
 	Radon(N n, D d)
 	{
 		numerator = n;
 		denominator = d;
 	}
 
-	Radon(const char* source)
-	{
-
-	}
+	Radon(std::string source);
 
 public:
 	RadonValue operator+(RadonValue rhs);
