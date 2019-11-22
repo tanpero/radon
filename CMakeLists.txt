@@ -1,6 +1,6 @@
-cmake_minimum_required (version 3.0.0)
+cmake_minimum_required (VERSION 3.0)
 project (radon)
-add_library (radon static
-    "src\radon.h"
-	"src\radon.cc"
+add_library (radon STATIC
+    "src/radon.h"
+	"src/radon.cc"
 )
