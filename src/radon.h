@@ -15,14 +15,32 @@ class Radon
 	Bigint numerator;
 	Bigint denominator;
 
+	enum
+	{
+		POSITIVE, NEGATIVE
+	} sign;
+
 public:
+	Radon();
+	Radon(Radon&);
+	Radon& operator=(Radon&);
+
 	template<typename N, typename D,
-		typename = std::enable_if_t<std::is_arithmetic<N>::value
-		&& std::is_arithmetic<D>::value>>
+		typename = std::enable_if_t<(std::is_arithmetic<N>::value || std::is_same<N, Bigint>::value)
+		&& (std::is_arithmetic<D>::value || std::is_same<D, Bigint>::value)>>
 	Radon(N n, D d)
 	{
-		numerator = n;
-		denominator = d;
+		// 默认符号为正，若分子取绝对值不等于分子，则分子是负数，符号被设为负。
+		// 若分母取绝对值不等于分母，则分母是负数，若分子是正数，则符号设为负，否则设为正。
+		bool _sign = true;
+		Bigint _n = abs(n);
+		Bigint _d = abs(d);
+		_sign = _n == n;
+		_sign = _d == d;
+		sign = sign ? POSITIVE : NEGATIVE;
+
+		numerator = _n;
+		denominator = _d;
 	}
 
 	Radon(std::string source);
@@ -72,9 +90,19 @@ public:
 	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
 	Radon operator%=(R rhs);
 
+	Radon operator+();
+	Radon operator-();
+	bool operator!();
+
+public:
+	Radon& simplify();
 
 public:
 	std::string toString();
+	double toDouble();
+	float toFloat();
+	long double toLongDouble();
+	std::pair<Bigint, Bigint> toArbitrary();
 
 };
 

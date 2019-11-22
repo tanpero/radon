@@ -69,6 +69,7 @@ public:
     long long longValue() const;
     friend Bigint gcd(const Bigint &a, const Bigint &b);
     friend Bigint lcm(const Bigint &a, const Bigint &b);
+	friend Bigint abs(const Bigint &n);
 
     void fromString(const std::string &s);
     void fromString(const std::string &s, int base);

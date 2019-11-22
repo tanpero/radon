@@ -419,6 +419,11 @@ Bigint lcm(const Bigint & a, const Bigint & b)
 	return a / gcd(a, b) * b;
 }
 
+Bigint abs(const Bigint& n)
+{
+	return n.abs();
+}
+
 
 void Bigint::fromString(const std::string &s)
 {
