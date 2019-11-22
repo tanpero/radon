@@ -33,14 +33,51 @@ public:
 	Radon operator*(Radon rhs);
 	Radon operator/(Radon rhs);
 	Radon operator%(Radon rhs);
-	Radon operator++(int);
-	Radon operator--(int);
-	Radon operator++();
-	Radon operator--();
+	
+	Radon operator+=(Radon rhs);
+	Radon operator-=(Radon rhs);
+	Radon operator*=(Radon rhs);
+	Radon operator/=(Radon rhs);
+	Radon operator%=(Radon rhs);
+
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator+(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator-(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator*(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator/(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator%(R rhs);
+	
+	
+    template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator+=(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator-=(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator*=(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator/=(R rhs);
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	Radon operator%=(R rhs);
+
 
 public:
 	std::string toString();
 
 };
+
+std::ostream& operator<<(std::ostream& os, Radon& radon);
 
 #endif // !_RADON_H_

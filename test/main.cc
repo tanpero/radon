@@ -3,6 +3,7 @@
 int main(int argc, char* argv[])
 {
 	Radon r1(100, 200);
-	std::cout << r1.toString() << std::endl;
+	Radon r2(53, 179);
+	std::cout << "r1 = " << r1 << ", r2 = " << r2 << std::endl;
 	return 0;
 }
