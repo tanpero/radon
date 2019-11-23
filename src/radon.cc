@@ -30,32 +30,41 @@ Radon Radon::operator/(Radon rhs)
 
 Radon Radon::operator%(Radon rhs)
 {
-	return Radon();
+	Bigint newDenominator = denominator * rhs.denominator;
+	Bigint leftNumerator = numerator * rhs.denominator;
+	Bigint rightNumerator = rhs.numerator * denominator;
+	Bigint mod = leftNumerator % rightNumerator;
+	return Radon(mod, newDenominator);
 }
 
 Radon Radon::operator+=(Radon rhs)
 {
-	return Radon();
+	*this = *this + rhs;
+	return *this;
 }
 
 Radon Radon::operator-=(Radon rhs)
 {
-	return Radon();
+	*this = *this - rhs;
+	return *this;
 }
 
 Radon Radon::operator*=(Radon rhs)
 {
-	return Radon();
+	*this = *this * rhs;
+	return *this;
 }
 
 Radon Radon::operator/=(Radon rhs)
 {
-	return Radon();
+	*this = *this / rhs;
+	return *this;
 }
 
 Radon Radon::operator%=(Radon rhs)
 {
-	return Radon();
+	*this = *this % rhs;
+	return *this;
 }
 
 Radon& Radon::simplify()

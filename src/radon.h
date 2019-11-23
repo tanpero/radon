@@ -10,7 +10,7 @@
 #include <bigint.h>
 #include <tuple>
 
-class RadonException : std::exception
+class RadonException : public std::exception
 {
 	const char* _info;
 public:
