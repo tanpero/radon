@@ -10,6 +10,20 @@
 #include <bigint.h>
 #include <tuple>
 
+class RadonException : std::exception
+{
+	const char* _info;
+public:
+	RadonException(std::string info)
+	{
+		_info = info.c_str();
+	}
+	const char* what()
+	{
+		return _info;
+	}
+};
+
 class Radon
 {
 	Bigint numerator;
@@ -96,6 +110,8 @@ public:
 
 public:
 	Radon& simplify();
+	Radon& getReciprocal();
+	Radon& toReciprocal();
 
 public:
 	std::string toString();
@@ -109,3 +125,9 @@ public:
 std::ostream& operator<<(std::ostream& os, Radon& radon);
 
 #endif // !_RADON_H_
+
+template<typename R, >
+inline Radon Radon::operator+(R rhs)
+{
+	return Radon();
+}

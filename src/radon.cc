@@ -14,11 +14,62 @@ Radon Radon::operator-(Radon rhs)
 	return Radon(newDenominator, newNumerator);
 }
 
+Radon Radon::operator*(Radon rhs)
+{
+	return Radon(numerator * rhs.numerator, denominator * rhs.denominator);
+}
+
+Radon Radon::operator/(Radon rhs)
+{
+	return *this * rhs.getReciprocal();
+}
+
+Radon Radon::operator%(Radon rhs)
+{
+	return Radon();
+}
+
+Radon Radon::operator+=(Radon rhs)
+{
+	return Radon();
+}
+
+Radon Radon::operator-=(Radon rhs)
+{
+	return Radon();
+}
+
+Radon Radon::operator*=(Radon rhs)
+{
+	return Radon();
+}
+
+Radon Radon::operator/=(Radon rhs)
+{
+	return Radon();
+}
+
+Radon Radon::operator%=(Radon rhs)
+{
+	return Radon();
+}
+
 Radon& Radon::simplify()
 {
 	Bigint _gcd = gcd(numerator, denominator);
 	numerator /= _gcd;
 	denominator /= _gcd;
+	return *this;
+}
+
+Radon & Radon::getReciprocal()
+{
+	return Radon(denominator, numerator);
+}
+
+Radon & Radon::toReciprocal()
+{
+	*this = getReciprocal();
 	return *this;
 }
 
