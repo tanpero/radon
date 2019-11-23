@@ -109,6 +109,32 @@ public:
 	bool operator!();
 
 public:
+	template <typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	bool operator==(R rhs);
+	bool operator==(Radon& rhs);
+
+	template <typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	bool operator!=(R rhs);
+	bool operator!=(Radon& rhs);
+
+	template <typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	bool operator>=(R rhs);
+	bool operator>=(Radon& rhs);
+
+	template <typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	bool operator<=(R rhs);
+	bool operator<=(Radon& rhs);
+
+	template <typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	bool operator>(R rhs);
+	bool operator>(Radon& rhs);
+
+	template <typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+	bool operator<(R rhs);
+	bool operator<(Radon& rhs);
+
+
+public:
 	Radon& simplify();
 	Radon& getReciprocal();
 	Radon& toReciprocal();

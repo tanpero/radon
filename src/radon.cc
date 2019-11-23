@@ -21,6 +21,10 @@ Radon Radon::operator*(Radon rhs)
 
 Radon Radon::operator/(Radon rhs)
 {
+	if (rhs == 0)
+	{
+		throw new RadonException("Denominator cannot be zero");
+	}
 	return *this * rhs.getReciprocal();
 }
 
