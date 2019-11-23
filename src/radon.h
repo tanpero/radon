@@ -35,9 +35,8 @@ class Radon
 	} sign;
 
 public:
-	Radon();
-	Radon(Radon&);
-	Radon& operator=(Radon&);
+	Radon() {}
+	~Radon() {}
 
 	template<typename N, typename D,
 		typename = std::enable_if_t<(std::is_arithmetic<N>::value || std::is_same<N, Bigint>::value)
@@ -135,6 +134,7 @@ public:
 
 public:
 	Radon& reduce();
+	Radon& getIrreducible();
 	Radon& getReciprocal();
 	Radon& toReciprocal();
 
