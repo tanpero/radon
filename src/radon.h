@@ -41,7 +41,7 @@ public:
 	template<typename N, typename D,
 		typename = std::enable_if_t<(std::is_arithmetic<N>::value || std::is_same<N, Bigint>::value)
 		&& (std::is_arithmetic<D>::value || std::is_same<D, Bigint>::value)>>
-	Radon(N n, D d)
+		Radon(N n, D d)
 	{
 		// 默认符号为正，若分子取绝对值不等于分子，则分子是负数，符号被设为负。
 		// 若分母取绝对值不等于分母，则分母是负数，若分子是正数，则符号设为负，否则设为正。
@@ -64,7 +64,7 @@ public:
 	Radon operator*(Radon rhs);
 	Radon operator/(Radon rhs);
 	Radon operator%(Radon rhs);
-	
+
 	Radon operator+=(Radon rhs);
 	Radon operator-=(Radon rhs);
 	Radon operator*=(Radon rhs);
@@ -86,8 +86,8 @@ public:
 
 	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
 	Radon operator%(R rhs);
-	
-    template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+
+	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
 	Radon operator+=(R rhs);
 
 	template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
@@ -134,8 +134,8 @@ public:
 
 public:
 	Radon& reduce();
-	Radon& getIrreducible();
-	Radon& getReciprocal();
+	Radon getIrreducible();
+	Radon getReciprocal();
 	Radon& toReciprocal();
 
 public:
@@ -149,33 +149,33 @@ public:
 
 std::ostream& operator<<(std::ostream& os, Radon& radon);
 
-#endif // !_RADON_H_
+//std::ostream &operator<<(std::ostream &os, Radon &&radon);
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator+(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator-(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator*(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator/(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator%(R rhs)
 {
 	return Radon();
@@ -184,65 +184,68 @@ inline Radon Radon::operator%(R rhs)
 /*template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
 inline Radon Radon::operator+=(R rhs)
 {
-	return Radon();
+return Radon();
 }*/
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator-=(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator*=(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator/=(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline Radon Radon::operator%=(R rhs)
 {
 	return Radon();
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline bool Radon::operator==(R rhs)
 {
 	return false;
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline bool Radon::operator!=(R rhs)
 {
 	return false;
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline bool Radon::operator>=(R rhs)
 {
 	return false;
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline bool Radon::operator<=(R rhs)
 {
 	return false;
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline bool Radon::operator>(R rhs)
 {
 	return false;
 }
 
-template<typename R, typename = std::enable_if_t<std::is_arithmetic<R>::value>>
+template<typename R, typename T>
 inline bool Radon::operator<(R rhs)
 {
 	return false;
 }
+
+
+#endif // !_RADON_H_

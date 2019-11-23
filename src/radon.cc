@@ -75,7 +75,7 @@ Radon& Radon::reduce()
 	return *this;
 }
 
-Radon & Radon::getIrreducible()
+Radon Radon::getIrreducible()
 {
 	Radon radon = *this;
 	Bigint _gcd = gcd(radon.numerator, radon.denominator);
@@ -84,7 +84,7 @@ Radon & Radon::getIrreducible()
 	return radon;
 }
 
-Radon & Radon::getReciprocal()
+Radon Radon::getReciprocal()
 {
 	return Radon(denominator, numerator);
 }
@@ -132,19 +132,19 @@ Radon Radon::operator+()
 
 Radon Radon::operator-()
 {
-	return Radon();
+	Radon radon = *this;
+	radon.sign = radon.sign == POSITIVE ? NEGATIVE : POSITIVE;
+	return radon;
 }
 
 bool Radon::operator!()
 {
-	return false;
+	return numerator == 0;
 }
 
 bool Radon::operator==(Radon & rhs)
 {
-	Radon r1 = this->getIrreducible();
-	Radon r2 = rhs.getIrreducible();
-	return r1.numerator == r2.numerator && r1.denominator == r2.denominator;
+	return numerator * rhs.denominator >= denominator * rhs.numerator;
 }
 
 bool Radon::operator!=(Radon & rhs)
@@ -154,20 +154,20 @@ bool Radon::operator!=(Radon & rhs)
 
 bool Radon::operator>=(Radon & rhs)
 {
-	return false;
+	return numerator * rhs.denominator >= denominator * rhs.numerator;
 }
 
 bool Radon::operator<=(Radon & rhs)
 {
-	return false;
+	return numerator * rhs.denominator <= denominator * rhs.numerator;
 }
 
 bool Radon::operator>(Radon & rhs)
 {
-	return false;
+	return numerator * rhs.denominator > denominator * rhs.numerator;
 }
 
 bool Radon::operator<(Radon & rhs)
 {
-	return false;
+	return numerator * rhs.denominator < denominator * rhs.numerator;
 }

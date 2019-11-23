@@ -1,4 +1,4 @@
-#include <radon.h>
+ï»¿#include <radon.h>
 
 int main(int argc, char* argv[])
 {
@@ -7,13 +7,16 @@ int main(int argc, char* argv[])
 	r1.toString();
 	std::cout << std::boolalpha
 		<< "r1 = " << r1 << ", r2 = " << r2
-		<< "\nr1 £« r2 = " << (r1 + r2)
-		<< "\nr1 £­ r2 = " << (r1 - r2)
-		<< "\nr1 ¡Á r2 = " << (r1 * r2)
-		// << "\nr1 ¡Â r2 = " << (r1 / r2)
+		<< "\n    equivalent to: r1 = " << r1.getIrreducible() << ", r2 = " << r2.getIrreducible()
+		<< "\nr1 ï¼‹ r2 = " << (r1 + r2)
+		<< "\nr1 ï¼ r2 = " << (r1 - r2)
+		<< "\nr1 Ã— r2 = " << (r1 * r2)
+		<< "\nr1 Ã· r2 = " << (r1 / r2)
 		<< "\nr1 mod r2 = " << (r1 % r2)
-		// << "\nr1 == r2: " << (r1 == r2)
-		// << "\nr1 != r2: " << (r1 != r2) 
+		<< "\nr1 == r2: " << (r1 == r2)
+		<< "\nr1 != r2: " << (r1 != r2) 
+		<< "\nr1 > r2: " << (r1 > r2) << ", r1 >= r2: " << (r1 >= r2)
+		<< "\nr1 < r2: " << (r1 < r2) << ", r1 <= r2: " << (r1 <= r2)
 		<< std::endl;
 	return 0;
 }
