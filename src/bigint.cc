@@ -228,8 +228,11 @@ std::pair<Bigint, Bigint> divmod(const Bigint & a1, const Bigint & b1)
 {
 
 	int norm = base / (b1.a.back() + 1);
+	std::cout << norm << "\n";
 	Bigint a = a1.abs() * norm;
+	std::cout << a << "\n";
 	Bigint b = b1.abs() * norm;
+	std::cout << b << "\n";
 	Bigint q, r;
 	q.a.resize(a.a.size());
 
@@ -238,7 +241,7 @@ std::pair<Bigint, Bigint> divmod(const Bigint & a1, const Bigint & b1)
 		r += a.a[i];
 		int s1 = r.a.size() <= b.a.size() ? 0 : r.a[b.a.size()];
 		int s2 = r.a.size() <= b.a.size() - 1 ? 0 : r.a[b.a.size() - 1];
-		int d = ((long long)base * s1 + s2) / b.a.back();
+		int d = (static_cast<long long>(base) * s1 + s2) / b.a.back();
 		r -= b * d;
 		while (r < 0)
 			r += b, --d;
@@ -271,7 +274,7 @@ void Bigint::operator/=(int v)
 	if (v < 0)
 		sign = -sign, v = -v;
 	for (int i = static_cast<int>(a.size() - 1); i >= 0; --i) {
-		long long cur = a[i] + rem * (long long)base;
+		long long cur = a[i] + rem * static_cast<long long>(base);
 		a[i] = static_cast<int>((cur / v));
 		rem = static_cast<int>((cur % v));
 	}
@@ -422,6 +425,16 @@ Bigint lcm(const Bigint & a, const Bigint & b)
 Bigint abs(const Bigint& n)
 {
 	return n.abs();
+}
+
+Bigint max(const Bigint & a, const Bigint & b)
+{
+	return a > b ? a : b;
+}
+
+Bigint min(const Bigint & a, const Bigint & b)
+{
+	return a < b ? a : b;
 }
 
 
