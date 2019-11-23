@@ -293,7 +293,7 @@ int Bigint::operator%(int v) const
 		v = -v;
 	int m = 0;
 	for (int i = a.size() - 1; i >= 0; --i)
-		m = (a[i] + m * (long long)base) % v;
+		m = (a[i] + m * static_cast<long long>(base)) % v;
 	return m * sign;
 }
 
